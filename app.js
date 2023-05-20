@@ -32,9 +32,11 @@ app.get('/', async (req, res) => {
   
 //   var userrole =await user.addRoles(role);
 //     res.send(userrole);
-  var user = await Users.findAll({});
-
-  console.log(user);
+  var user = await Users.findOne({
+    include:Roles
+  });
+  res.send(user);
+ 
 })
 app.listen(port, () => {
   sequelize.sync({ force: false })
