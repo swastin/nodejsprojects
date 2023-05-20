@@ -24,6 +24,7 @@ var userdata = {
   password: 'Swastin@1995',
 }
 app.get('/', async (req, res) => {
+  
   role = await Roles.findAll({ where: { roleName: 'admin' } });
 var  user= await Users.create({firstname: 'swastin',lastname: 'sahoo',email: 'swastin95.sahoo@gmail.com', password: 'Swastin@1995',
     }, {fields: ['firstname','lastname','email','password']
