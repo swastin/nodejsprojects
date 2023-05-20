@@ -18,23 +18,21 @@ var role = {
 
 
 var userdata = {
-  firstName: 'swastin',
-  lastName: 'sahoo',
+  firstname: 'swastin',
+  lastname: 'sahoo',
   email: 'swastin95.sahoo@gmail.com',
   password: 'Swastin@1995',
 }
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  role = await Roles.findAll({ where: { roleName: 'admin' } });
+var  user= await Users.create({firstname: 'swastin',lastname: 'sahoo',email: 'swastin95.sahoo@gmail.com', password: 'Swastin@1995',
+    }, {fields: ['firstname','lastname','email','password']
+})
+    res.send(user);
 
-  //Roles.create(role,{fields:['roleName','description']})
-  role = Roles.findAll({ where: { roleName: 'admin' } }).then((result) => {
-    res.send(result)
-
-  }).catch((err) => {
-    res.send(err)
-  });
 })
 app.listen(port, () => {
-  sequelize.sync({ force:false })
+  sequelize.sync({ force: false })
 
   console.log(`Server is running on port ${port}`);
 })
