@@ -25,14 +25,16 @@ var userdata = {
 }
 app.get('/', async (req, res) => {
   
-  role = await Roles.findAll({ where: { roleName: 'admin' } });
-var  user= await Users.create({firstname: 'swastin',lastname: 'sahoo',email: 'swastin95.sahoo@gmail.com', password: 'Swastin@1995',
-    }, {fields: ['firstname','lastname','email','password']
-})
+//   role = await Roles.findAll({ where: { roleName: 'admin' } });
+// var  user= await Users.create({firstname: 'swastin',lastname: 'sahoo',email: 'swastin95.sahoo@gmail.com', password: 'Swastin@1995',
+//     }, {fields: ['firstname','lastname','email','password']
+// })
   
-  var userrole =await user.addRoles(role);
-    res.send(userrole);
+//   var userrole =await user.addRoles(role);
+//     res.send(userrole);
+  var user = await Users.findAll({});
 
+  console.log(user);
 })
 app.listen(port, () => {
   sequelize.sync({ force: false })
