@@ -10,16 +10,16 @@ const Roles = require('../models/Roles');
 //const roles = require('../models/Roles');
 
 async function getAllRoles(req, res) {
-    var role = await roles.findAll();
+    var role = await Roles.findAll();
     return res.json(role);
 }
 async function getRoleById(req, res) {
     var id = req.params.id;
-    var role = await roles.findByPk(id);
+    var role = await Roles.findByPk(id);
     return res.json(role);
 }
 async function createRoles(req, res) {
-    var roles = await roles.create(req.body, { fields: [] });
+    var roles = await Roles.create(req.body, { fields: [roleName,description] });
     return res.json(roles);
 }
 async function updateRoles(req, res) {

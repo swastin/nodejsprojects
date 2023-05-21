@@ -1,18 +1,21 @@
-var createError = require('http-errors');
+// var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var faker = require('./node_modules/@faker-js/faker')
 var env = require('dotenv').config();
 var app = express();
 var sequelize = require('./config/db_config');
 var Users = require('./models/Users');
 const Roles = require('./models/Roles');
-var userRouter = require('../routes/usersRoutes');
-var roleRouter = require('../routes/rolesRoutes');
-app.use('/user', userRouter);
-app.use('/role', roleRouter);
+var userRouter = require('./routes/usersRouter');
+var roleRouter = require('./routes/rolesRouter');
+app.use(cookieParser());
+app.use(express.urlencoded());
+app.use(express.json());
+var port = process.env.PORT || 8080;;
+const router = express.Router();
+//app.use('/users', userRouter);
+app.use('/roles', roleRouter);
 
 
 

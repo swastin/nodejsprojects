@@ -1,8 +1,10 @@
 var express = require('express');
-var router = express.Router();
+var roleRouter = express.Router();
 var { getAllRoles, getRoleById, createRoles, updateRoles, deleteRoles } = require('../controllers/rolesController');
-router.post('/roles', createRoles)
-router.get('/roles', getAllRoles)
-router.get('/roles/:id', getRoleById)
-router.put('/roles/:id', updateRoles)
-router.delete('/roles/:id', deleteRoles)
+roleRouter.post('/roles', createRoles);
+roleRouter.get('/roles', getAllRoles);
+roleRouter.get('/roles/:id', getRoleById);
+roleRouter.put('/roles/:id', updateRoles);
+roleRouter.delete('/roles/:id', deleteRoles);
+
+module.exports = roleRouter;
