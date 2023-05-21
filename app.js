@@ -9,35 +9,13 @@ var app = express();
 var sequelize = require('./config/db_config');
 var Users = require('./models/Users');
 const Roles = require('./models/Roles');
-
-var port = process.env.port || 8080;
-var role = {
-  roleName: 'admin',
-  description: 'Do Admin Stuff'
-}
+var userRouter = require('./routes/userRoutes');
+var roleRouter = require('./routes/roleRoutes');
+app.use('/user', userRouter);
+app.use('/role', roleRouter);
 
 
-var userdata = {
-  firstname: 'swastin',
-  lastname: 'sahoo',
-  email: 'swastin95.sahoo@gmail.com',
-  password: 'Swastin@1995',
-}
-app.get('/', async (req, res) => {
-  
-//   role = await Roles.findAll({ where: { roleName: 'admin' } });
-// var  user= await Users.create({firstname: 'swastin',lastname: 'sahoo',email: 'swastin95.sahoo@gmail.com', password: 'Swastin@1995',
-//     }, {fields: ['firstname','lastname','email','password']
-// })
-  
-//   var userrole =await user.addRoles(role);
-//     res.send(userrole);
-  var user = await Users.findOne({
-    include:Roles
-  });
-  res.send(user);
- 
-})
+
 app.listen(port, () => {
   sequelize.sync({ force: false })
 
