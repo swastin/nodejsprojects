@@ -9,8 +9,8 @@ var app = express();
 var sequelize = require('./config/db_config');
 var Users = require('./models/Users');
 const Roles = require('./models/Roles');
-var userRouter = require('./routes/userRoutes');
-var roleRouter = require('./routes/roleRoutes');
+var userRouter = require('../routes/usersRoutes');
+var roleRouter = require('../routes/rolesRoutes');
 app.use('/user', userRouter);
 app.use('/role', roleRouter);
 
