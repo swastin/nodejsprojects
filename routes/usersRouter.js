@@ -11,20 +11,15 @@ var router = express.Router();
  * 
  */
 
-router.post('/user', function (req, res, next) { 
-})
-router.get('/user', function (req, res, next) { 
+var express = require('express');
+var userRouter = express.Router();
+var { getAllUsers, getUserById, createUser, updateUser, deleteUser } = require('../controllers/userController');
+userRouter.post('/users', createUser);
+userRouter.get('/users', getAllUsers);
+userRouter.get('/users/:id', getUserById);
+userRouter.put('/users/:id', updateUser);
+userRouter.delete('/users/:id', deleteUser);
 
-})
-router.get('/user/:id', function (req, res, next) {
+module.exports = userRouter;
 
-})
 
-router.put('/user/:id', function (req, res, next) { 
-
-})
-router.delete('/user/:id', function (req, res, next) { 
-
-  
-})
-module.exports = router;
